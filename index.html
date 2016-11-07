@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>2016教育创新大会</title>
+<link rel="stylesheet" href="css/jquery.fullPage.css">
+<meta charset="utf-8" />
+    <meta name="keywords" content="慧科集团，慧科教育，慧科，高校邦，课工厂，开课吧，无限互联，莱茵教育，教育部，高等教育，职业教育，在线教育，国际教育，产教融合，创新创业，校企联盟，高教司，职成司，数字化学习工程技术研究中心，创新创业联盟，高职，高专，高职高专，中国高等教育学会，高教学会，在线教育研究中心，留学，留学服务，教育创新，教育大会，教育行业会议，学堂在线，中教，芥末堆，教育改革，教综改，杨斌，包信和，陈滢，罗凯，校企合作，国创计划，专业综改，聂风华，互联网+大赛，教育趋势，孙爱武，教育联盟，杨进，张海霞，赵巍，姜大源，学校规划发展中心，课程建设，课程研究，教学资源建设，教学实践，清华，复旦，北大，教育信息工程研究中心，专业共建，高教，职教，创新创业，互联网+，腾讯，百度，阿里，BAT">
+    <meta name="description" content="慧科集团，慧科教育，慧科，高校邦，课工厂，开课吧，无限互联，莱茵教育，教育部，高等教育，职业教育，在线教育，国际教育，产教融合，创新创业，校企联盟，高教司，职成司，数字化学习工程技术研究中心，创新创业联盟，高职，高专，高职高专，中国高等教育学会，高教学会，在线教育研究中心，留学，留学服务，教育创新，教育大会，教育行业会议，学堂在线，中教，芥末堆，教育改革，教综改，杨斌，包信和，陈滢，罗凯，校企合作，国创计划，专业综改，聂风华，互联网+大赛，教育趋势，孙爱武，教育联盟，杨进，张海霞，赵巍，姜大源，学校规划发展中心，课程建设，课程研究，教学资源建设，教学实践，清华，复旦，北大，教育信息工程研究中心，专业共建，高教，职教，创新创业，互联网+，腾讯，百度，阿里，BAT">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href="css/index.css" type="text/css" rel="stylesheet" />
+<style>
+.section { text-align: center; font: 50px "Microsoft Yahei"; color: #fff;}
+</style>
+<script src="js/jquery-1.8.3.min.js"></script>
+<script src="js/jquery-ui-1.10.3.min.js"></script>
+<script src="js/jquery.fullPage.min.js"></script>
+<script defer="defer" src="js/jquery.scroll.min.js"></script>
+
+
+<script type="text/javascript" src="js/angular.js"></script>
+<script type="text/javascript" src="js/indexCtrl.js"></script>
+<script>
+$(document).ready(function() {
+    
+    $.fn.fullpage({
+
+        anchors: ['page1', 'page2', 'page3', 'page4', 'page5', 'page6', 'page7', 'page8', 'page9', 'page10', 'page11', 'page12']
+
+    })
+
+    $('.nav_ul_li').eq(0).addClass('nav_ul_active');
+    
+    //teacher
+    $('.sliderBox1').on('mouseover',function(){
+        $('.sliderBox1').find('.showimg').addClass('opacityImg');
+        $(this).find('.showimg').removeClass('opacityImg');
+    });
+    $('.sliderBox1').on('mouseout',function(){
+        $('.sliderBox1').find('.showimg').removeClass('opacityImg');
+    });
+
+    //大会招商
+    $('.zhaoshang').on('click',function(){
+        window.open('http://eduvation2016.mikecrm.com/Td8bvu');
+    });
+    //大会购票
+    $('.goupiao').on('click',function(){
+        window.open('http://www.bagevent.com/event/166816');
+    });
+
+    $('.toTop').click(function(){
+        $('#superContainer').css('top',$('#superContainer').css('top'));
+        start();
+        delVideo();
+    });
+    //鼠标滑轮事件
+    $(document,document.body).on('mousewheel',function () {
+        delVideo()
+        start();
+    })
+    //IE之外的绑定事件方法 
+    if(document.addEventListener && !document.attachEvent) 
+    { 
+        document.addEventListener('mousewheel',start);
+        document.addEventListener('mousewheel',delVideo);  
+        //FF绑定滚动事件 
+        document.addEventListener('DOMMouseScroll',start);
+        document.addEventListener('DOMMouseScroll',delVideo);  
+    } 
+    //IE 
+    else if(document.attachEvent && !document.addEventListener){ 
+        document.attachEvent('onmousewheel',start); 
+        document.attachEvent('onmousewheel',delVideo); 
+    }else{ 
+        window.onmousewheel = start; 
+        window.onmousewheel = delVideo; 
+    }
+
+    //键盘按下事件
+    $(document,document.body).bind('keydown',function(e){
+      e = (e) ? e : ((window.event) ? window.event : "") 
+      var key = e.keyCode?e.keyCode:e.which; 
+            switch(key) {
+            case 37: 
+                //left 
+                break;
+            case 38:   
+                //up 
+                delVideo()
+                start();
+                break;
+            case 39:
+                //right
+                break;
+            case 40:
+                //down 
+                delVideo()
+                start();
+                break;
+            }
+        });
+
+    function start(){
+        delVideo()
+        setTimeout(function(){
+
+            if( $('.section').eq(0).hasClass('active') ){
+                 showLi(0);
+                 $('.videoTop').hide();
+                 return;
+            }
+            if( $('.section').eq(1).hasClass('active') ){
+                showLi(1); 
+                setTimeout(function(){
+                $('.videoTop').show();
+                },100) 
+                return;
+            }
+            if( $('.section').eq(2).hasClass('active') ){
+                 showLi(2);
+                 $('.videoTop').hide();
+                 return;
+            }
+            if( $('.section').eq(3).hasClass('active') ){
+                 showLi(3);
+                 $('.videoTop').hide();
+                 return;
+            }
+            if( $('.section').eq(4).hasClass('active') ){
+                 showLi(4);
+                 $('.videoTop').hide();
+                 return;
+            }
+            if( $('.section').eq(5).hasClass('active') ){
+                 showLi(5);
+                 $('.videoTop').hide();
+                 return;
+            }
+            if( $('.section').eq(6).hasClass('active') ){
+                 showLi(6);
+                 $('.videoTop').hide();
+                 return;
+            }
+            if( $('.section').eq(7).hasClass('active') ){
+                 showLi(7);
+                 $('.videoTop').hide();
+                 return;
+            } 
+
+        },500);                            
+        
+    }
+    start();
+
+    function showLi(showLIIndex){
+        $('.nav_ul_li').removeClass('nav_ul_active');
+        $('.nav_ul_li').eq(showLIIndex).addClass('nav_ul_active');
+
+        $('.borderLi').removeClass('borderLi_active');
+        $('.borderLi').eq(showLIIndex).addClass('borderLi_active');
+
+        $('.fontLi').removeClass('fontLi_active');
+        $('.fontLi').eq(showLIIndex).addClass('fontLi_active');
+
+        $('.numLI').removeClass('numLI_active');
+        $('.numLI').eq(showLIIndex).addClass('numLI_active');
+
+        $('.liPoint').removeClass('liPoint_active');
+        $('.liPoint').eq(showLIIndex).addClass('liPoint_active');
+        if( showLIIndex == 0 ){
+        	$('.liPoint').eq(showLIIndex+1).addClass('liPoint_active');
+        }else{
+            $('.liPoint').eq(showLIIndex-1).addClass('liPoint_active');
+            $('.liPoint').eq(showLIIndex+1).addClass('liPoint_active');
+        }
+        
+    }
+    showLi(0);
+
+    function delVideo(){  
+        // $('.videoTop').remove();
+        $('.videoTop').hide();
+    }
+    
+    $('.navTop').click(function(){
+        if($('.fontLi').css('display') == 'none'){
+            $('.fontLi').css('display','inline-block')
+        }else{
+            $('.fontLi').css('display','none')
+        }
+    });
+
+
+    $('.toTop').click(function(){
+        $('#superContainer').css('top','0px');
+        $('.section').removeClass('active');
+        $('.section').eq(0).addClass('active');
+        start();
+    });
+
+    //引入scroll插件
+    $(".scrollTableDIv").niceScroll({
+        touchbehavior:false,cursorcolor:"#4186ca",cursorwidth:18,horizrailenabled:true,
+        cursorborderradius:10,autohidemode:"scroll",background:'#1666B1',cursorborder:0,
+        cursoropacitymax:1,
+    });
+
+    
+    var _dom = '<video id="videoEle" class="videoTop" muted loop autoplay style="display:none;top:0px">'+
+              '<source src="http://gxbvideo-gs.gaoxiaobang.com/movie.mp4">'+
+              '您的浏览器不支持视频播放'+
+            '</video>';
+    
+        $('.div2_topBg').append(_dom);
+
+        
+        var media=document.getElementById("videoEle");
+        media.addEventListener("play",function(){
+            media.style.display="";
+        });
+
+        delVideo()
+    
+    
+
+    $('.scroll_pos').css({'height':$('.table2').height()});
+    $('.li_div1,.li_div2,.li_div3,.li_div4').on('click',function(){
+        $('.scroll_pos').css({'height':$('.table2').height()});
+        //console.log($('.table2').height());
+    })
+
+});
+</script>
+</head>
+
+<body ng-app="myApp" ng-controller="myCtrl" >
+<div class="logo"></div>
+    <div class="rightTop">
+        <ul>
+            <li class="rightTop_li zhaoshang">大会招商</li>
+            <li class="rightTop_li2">|</li>
+            <li class="rightTop_li goupiao">大会购票</li>
+        </ul>
+    </div>
+    <div class="navLeft">
+        <div class="navTop"></div>
+        <ul class="nav_ul">
+            <li class="nav_ul_li" ng-repeat="navlist in navArr">
+                <span class="numLI">0{{$index}}</span>
+                <span class="liPoint">•</span>
+                <span class="borderLi"></span>
+                <span class="fontLi">&nbsp;&nbsp;&nbsp;{{navlist.nav}}</span>
+            </li>
+        </ul>
+    </div>
+    <div class="rightCenter">
+        <ul>
+            <li class="rightCenter_li zhaoshang"></li>
+            <li class="rightCenter_li2 goupiao"></li>
+        </ul>
+    </div>
+    <div class="toTop"></div>
+<div class="section showDiv" data-anchor="page1">
+
+    <div class="div1">
+        <p class="contentTop_txt1" ng-show="contentTopshow1">
+            <img src="img/1/index1.png" class="img1"/>
+        </p>
+        <p class="contentTop_txt1" ng-show="contentTopshow2">
+            <img src="img/1/index2.png" class="img2"/>
+        </p>
+        <p class="contentTop_txt1" ng-show="contentTopshow3">
+            <img src="img/1/index3.png" class="img3"/>
+        </p>
+        <p class="contentTop_txt1" ng-show="contentTopshow4">
+            <img src="img/1/index4.png" class="img4"/>
+        </p>
+        <p class="contentTop_txt1" ng-show="contentTopshow5">
+            <img src="img/1/index5.png" class="img5"/>
+        </p>
+        <p class="contentTop_txt1" ng-show="contentTopshow6">
+            <img src="img/1/index6.png" class="img5"/>
+        </p>
+
+        <p class="contentTop_txt3 goupiao">购买大会嘉宾票</p>
+        <p class="contentTop_txt2">
+            北京·国家会议中心 2016.10.26 开幕，倒计时还有<span ng-bind="{{ LastDay }}"></span>天  
+        </p>
+    </div>
+
+    <div class="fixed">
+        <img src="img/arrow.png">
+    </div>
+</div>
+<div class="section showDiv" data-anchor="page2" style="position: relative;">
+    <div class="div2_topBg">
+    </div>
+    <div class="div2_2016"></div>
+    <div class="div2_2016_bg"></div>
+            
+    <div class="div2_txt1" style="overflow-y:auto">
+        <p>{{ jianjie }}<p>
+        <p>{{ jianjie2 }}</p>
+        <p>{{ jianjie3 }}</p>
+    </div>
+
+    <div class="fixed">
+       <img src="img/arrow.png"  ng-click="del_video()">
+    </div>
+</div>
+<div class="section showDiv" data-anchor="page3">
+<div class="div4_1 div3_1">
+            <ul>
+                <li style="font-size:20px;color:#fff;text-align: center;">大会嘉宾
+                    <div class="div4_li_cur2" style="top:135px"></div>
+                </li>
+            </ul>
+        </div>
+        <div class="div3_top"></div>
+
+        <div class="div3_sliderBox">
+            
+            <div class="div3_slider">
+                <div class="slider_btn slider_left" ng-click="sliderIndexLeft()">〈</div>
+                <!-- <div class="slider_btn slider_left_bg"></div> -->
+                <div class="slider_btn slider_right" ng-click="sliderIndexRight()">〉</div>
+                <!-- <div class="slider_btn slider_right_bg"></div> -->
+                <div class="sliderBox">
+                    <div class="sliderBox1" ng-repeat="list in teacherList" ng-mouseover="cancelTimer();showTeacherJianjie = true" ng-mouseout="showTeacherJianjie = false">
+                        <div class="sliderBox1_img">
+                            <img class="showimg" ng-src="{{ list.src }}" />
+                        </div>
+                        <div class="sliderBox1_txt" ng-show="!showTeacherJianjie">
+                            <span>{{ list.name }}</span>{{ list.job }}<br/>
+                            {{ list.job2 }}
+                        </div>
+                        
+                        <div class="teacher_jianjie" ng-show="showTeacherJianjie">
+                            <div class="sliderBox1_txt2">
+                                <span>{{ list.name }}</span>{{ list.job }}<br/>
+                                {{ list.job2 }}
+                            </div>
+                            {{ list.jianjie }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+<div class="fixed"><img src="img/arrow.png" ></div>
+</div>
+<div class="section showDiv" data-anchor="page4">
+    <div class="div4_1 div4_top" style="width:800px;">
+        <ul>
+            <li class="li_div1" style="width:200px;" ng-class="show41 == true ? 'div4_li div4_li_cur':'div4_li'" ng-click="showTab4(1)">上午主会场
+                <div class="div4_li_cur2" ng-show="show41 == true"></div>
+            </li>
+            <li class="li_div2" style="width:200px;" ng-class="show42 == true ? 'div4_li div4_li_cur':'div4_li'" ng-click="showTab4(2)">下午分会场一
+            <div class="div4_li_cur2" ng-show="show42 == true"></div>
+            </li>
+            <li class="li_div3" style="width:200px;" ng-class="show43 == true ? 'div4_li div4_li_cur':'div4_li'" ng-click="showTab4(3)">下午分会场二
+                <div class="div4_li_cur2" ng-show="show43 == true"></div>
+            </li>
+            <li class="li_div4" style="width:200px;" ng-class="show44 == true ? 'div4_li div4_li_cur':'div4_li'" ng-click="showTab4(4)">下午分会场三
+                 <div class="div4_li_cur2" ng-show="show44 == true"></div>
+            </li>
+        </ul>
+    </div>
+    <div class="div4_title">{{ dataListFour_title }}</div>
+<div class="div4_2">
+    <table style="width:900px;">
+        <thead>
+            <tr>
+                <th style="width:120px;">时间</th>
+                <th style="width:360px;">日程</th>
+                <th style="width:430px;">嘉宾</th>
+            </tr>
+        </thead>
+    </table>
+    <div class="scrollTableDIv" style="width:900px;height:275px;overflow:hidden ">
+        <table class="table2" tabindex="500" style="float:left;width:880px">
+            <tbody>
+                <tr ng-repeat=" list in dataListFour">
+                    <td style="width:120px;">
+                        {{ list.time }}
+                    </td>
+                    <td style="width:360px;">
+                        <p ng-bind-html="list.thing | trustAsHtml"></p>
+                    </td>
+                    <td style="width:430px;">
+                        <p ng-bind-html="list.guest | trustAsHtml"></p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="scroll_pos"></div>
+    </div>
+    
+</div>
+<div class="fixed"><img src="img/arrow.png" ></div>
+</div>
+<div class="section showDiv" data-anchor="page5">
+        <!-- <div class="div4_1 div5_1">
+            <ul>
+                <li class="div4_li div5_li div4_li_cur">贵宾票
+                    <div class="div4_li_cur2"></div>
+                </li>
+                <li class="div4_li div5_li div4_li_cur">嘉宾票
+                    <div class="div4_li_cur2"></div>
+                </li>
+            </ul>
+        </div> -->
+        <div class="div5_2">
+            <div class="div5_div1" ng-repeat="list in dataListFive" style="margin-right:35px;">
+                <div class="list1_p">{{ list.price_1 }}</div>
+                <p class="div5_txt">{{ list.priceType }}</p>
+                <p class="div5_txt2" style="left:90px">
+                    <span><b>￥</b>{{ list.price }}</span>元
+                </p>
+                <a href="javascript:;" target="_blank">
+                    <div class="div5_bottom goupiao">点击购买</div>
+                </a>
+            </div>
+
+            <div class="div5_div1" ng-repeat="list in dataListFive2">
+                <div class="list1_p">{{ list.price_1 }}</div>
+                <p class="div5_txt">{{ list.priceType }}</p>
+                <p class="div5_txt2">
+                    <span><b>￥</b>{{ list.price }}</span>元
+                </p>
+                <a href="javascript:;" target="_blank">
+                    <div class="div5_bottom goupiao">点击购买</div>
+                </a>
+            </div>
+        </div>
+        <script type="text/javascript" src="http://www.bagevent.com/resources/js/iframeResizer/iframeResizer.min.js"></script>
+            <iframe id="promote_ticket_iframe" width="100%" src="http://www.bagevent.com/widget/ticket/166816?widget=2" frameborder="0" scrolling="no"></iframe>
+        <script type="text/javascript">
+            iFrameResize({checkOrigin: false,heightCalculationMethod: 'taggedElement'})
+        </script>
+<div class="fixed"><img src="img/arrow.png" ></div>
+</div>
+<div class="section showDiv" data-anchor="page6">
+<div class="showDiv div6">
+    </div>
+<div class="fixed"><img src="img/arrow.png" ></div>
+</div>
+<div class="section showDiv" data-anchor="page7">
+<div class="showDiv div7">
+    </div>
+<div class="fixed"><img src="img/arrow.png" ></div>
+</div>
+<div class="section showDiv" data-anchor="page8">
+    <div class="showDiv div8">
+    </div>
+</div>
+
+</body>
+
+<!-- 百度统计嵌入代码： -->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "http://hm.baidu.com/hm.js?cb0ae11ab77c41bf044db877d1b80d7a";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+</html>
